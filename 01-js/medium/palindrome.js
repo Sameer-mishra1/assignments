@@ -4,7 +4,17 @@
 */
 
 function isPalindrome(str) {
-  return true;
+
+  str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+  let newStr = str.split('').reverse().join("");
+
+  return str === newStr;
 }
 
+console.log(isPalindrome("Nan"));
+
 module.exports = isPalindrome;
+
+
+console.log("Sameer Mishra".split(' ').join('').toLowerCase().split("").reverse().join(""))
