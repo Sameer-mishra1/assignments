@@ -6,19 +6,41 @@
  */
 
 function wait1(t) {
-
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(`Promise has been resolved after ${t} seconds.`)
+        }, t * 1000);
+    })
 }
 
 function wait2(t) {
-
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(`Promise has been resolved after ${t} seconds.`)
+        }, t * 1000);
+    })
 }
 
 function wait3(t) {
-
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(`Promise has been resolved after ${t} seconds.`)
+        }, t * 1000);
+    })
 }
 
-function calculateTime(t1, t2, t3) {
+// * Write a function that sequentially calls all 3 of these functions in order.
+// * Return a promise chain which return the time in milliseconds it takes to complete the entire operation.
 
+function calculateTime(t1, t2, t3) {
+    const startTime = Date.now();
+    return wait1(t1)
+        .then(() => wait2(t2))
+        .then(() => wait3(t3))
+        .then(() => {
+            const endTime = Date.now();
+            return endTime - startTime;
+        })
 }
 
 module.exports = calculateTime;
